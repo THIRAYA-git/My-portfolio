@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Fathima Thiraya R. — Full Stack Developer building reliable, user-focused web applications.">
+  <meta name="theme-color" content="#101827">
+  <title>Fathima Thiraya R. | Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --surface: #111c2e;
+      --surface-2: #152238;
+      --text: #edf2fb;
+      --muted: #a6b3c7;
+      --line: rgba(174, 194, 224, .14);
+      --accent: #8295ff;
+      --accent-2: #a9b5ff;
+      --cyan: #75d7e8;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; background:
+        radial-gradient(circle at 85% 8%, rgba(92, 110, 225, .13), transparent 28rem),
+        radial-gradient(circle at 8% 45%, rgba(53, 134, 164, .08), transparent 24rem),
+        var(--bg);
+      color: var(--text); font-family: "DM Sans", sans-serif; line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 44px)); margin: auto; }
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px);
+      background: rgba(11,18,32,.82); border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font: 700 1.05rem "Space Grotesk", sans-serif; letter-spacing: -.04em; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 26px; color: var(--muted); font-size: .9rem; }
+    .nav-links a:hover, .text-link:hover { color: var(--accent-2); }
+    .menu-btn { display: none; color: var(--text); background: none; border: 1px solid var(--line); border-radius: 10px; padding: 7px 11px; }
+    .hero { padding: 104px 0 88px; display: grid; grid-template-columns: 1.45fr .8fr; align-items: center; gap: 64px; min-height: 590px; }
+    .eyebrow { display: inline-flex; gap: 9px; align-items: center; color: var(--cyan); font-size: .78rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .dot { width: 7px; height: 7px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 14px var(--cyan); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 700 clamp(2.7rem, 6vw, 5.15rem)/1.04 "Space Grotesk", sans-serif; letter-spacing: -.065em; margin: 22px 0; }
+    .gradient { background: linear-gradient(100deg, #aab5ff 5%, #79d8e8 95%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-copy { max-width: 660px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 12px 19px; border-radius: 10px; font-weight: 700; font-size: .92rem; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #10172b; }
+    .btn-secondary { border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,.025); }
+    .hero-card { position: relative; border: 1px solid var(--line); border-radius: 24px; padding: 28px; background: linear-gradient(145deg, rgba(28,43,68,.94), rgba(16,26,43,.9)); box-shadow: 0 24px 80px rgba(0,0,0,.22); }
+    .avatar { width: 74px; height: 74px; border-radius: 20px; display: grid; place-items: center; background: linear-gradient(135deg, #8495ff, #5bc8d8); color: #10172b; font: 700 1.65rem "Space Grotesk"; margin-bottom: 22px; }
+    .hero-card h3 { font: 600 1.25rem "Space Grotesk"; margin-bottom: 5px; }
+    .hero-card p { color: var(--muted); font-size: .9rem; margin-bottom: 20px; }
+    .mini-stat { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding: 13px 0; font-size: .9rem; }
+    .mini-stat span:last-child { color: var(--accent-2); font-weight: 700; text-align: right; }
+    section { padding: 76px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
+    .kicker { color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 9px; }
+    h2 { font: 700 clamp(2rem, 4vw, 2.8rem)/1.12 "Space Grotesk"; letter-spacing: -.045em; margin-bottom: 0; }
+    .section-intro { color: var(--muted); max-width: 510px; margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 25px; }
+    .panel { background: rgba(17,28,46,.78); border: 1px solid var(--line); border-radius: 18px; padding: 27px; }
+    .panel p { color: var(--muted); margin-bottom: 0; }
+    .focus-list { display: grid; gap: 13px; }
+    .focus-item { display: flex; align-items: flex-start; gap: 12px; color: var(--muted); }
+    .check { color: var(--cyan); font-weight: 700; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .skill-card { padding: 21px; border: 1px solid var(--line); border-radius: 15px; background: rgba(17,28,46,.72); }
+    .skill-card h3 { font: 600 1rem "Space Grotesk"; margin-bottom: 13px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { border: 1px solid rgba(130,149,255,.2); background: rgba(130,149,255,.08); color: #c7d0ff; border-radius: 7px; padding: 5px 9px; font-size: .78rem; }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; background: linear-gradient(155deg, rgba(21,34,56,.96), rgba(15,25,42,.96)); border: 1px solid var(--line); border-radius: 18px; padding: 25px; min-height: 100%; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+    .project-icon { width: 43px; height: 43px; display: grid; place-items: center; border-radius: 12px; background: rgba(130,149,255,.13); color: var(--accent-2); font-size: 1.25rem; }
+    .project-type { color: var(--cyan); font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .project-card h3 { font: 600 1.3rem "Space Grotesk"; margin-bottom: 10px; }
+    .project-card p { color: var(--muted); font-size: .93rem; }
+    .project-card ul { color: var(--muted); padding-left: 19px; margin: 0 0 20px; font-size: .9rem; }
+    .project-card li { margin: 5px 0; }
+    .project-card .tags { margin-top: auto; margin-bottom: 20px; }
+    .project-link { color: var(--accent-2); font-weight: 700; font-size: .9rem; }
+    .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+    .edu-card { border-left: 2px solid var(--accent); padding: 4px 0 4px 20px; }
+    .edu-date { color: var(--cyan); font-size: .8rem; font-weight: 700; }
+    .edu-card h3 { font: 600 1.08rem "Space Grotesk"; margin: 7px 0 5px; }
+    .edu-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin-top: 27px; }
+    .cert { padding: 17px; background: rgba(17,28,46,.72); border: 1px solid var(--line); border-radius: 13px; font-size: .88rem; }
+    .cert small { display: block; color: var(--muted); margin-top: 5px; }
+    .contact-box { padding: 42px; border-radius: 22px; border: 1px solid rgba(130,149,255,.24); background: radial-gradient(circle at 90% 10%, rgba(130,149,255,.15), transparent 23rem), var(--surface); display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .contact-box p { color: var(--muted); max-width: 580px; margin: 12px 0 0; }
+    footer { padding: 27px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .83rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    .socials { display: flex; gap: 18px; }
+    .socials a:hover { color: var(--accent-2); }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 34px; padding-top: 75px; min-height: auto; }
+      .hero-card { max-width: 520px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-box { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(100% - 32px, var(--max)); }
+      nav { min-height: 65px; }
+      .menu-btn { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 65px; left: 0; right: 0; padding: 18px 22px 22px; background: #101a2a; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; gap: 15px; }
+      .nav-links.open { display: flex; }
+      .hero { padding: 65px 0 55px; }
+      section { padding: 58px 0; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .projects, .education-grid, .certs { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .skill-card { padding: 16px; }
+      .contact-box { padding: 27px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">THIRAYA<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#education">Education</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Full Stack Developer · Final-year MIT Student</div>
+        <h1>Building useful software.<br><span class="gradient">Improving it with purpose.</span></h1>
+        <p class="hero-copy">
+          I'm Fathima Thiraya R. I turn business requirements into practical web applications,
+          combining frontend development, backend engineering, API integration and a focus on software quality.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="mailto:thirayafathima@gmail.com">Contact me</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Profile summary">
+        <div class="avatar">FT</div>
+        <h3>Fathima Thiraya R.</h3>
+        <p>Full Stack Developer · Project Lead · QA-minded Engineer</p>
+        <div class="mini-stat"><span>Primary stack</span><span>PERN</span></div>
+        <div class="mini-stat"><span>Project focus</span><span>Business applications</span></div>
+        <div class="mini-stat"><span>Based in</span><span>Sri Lanka</span></div>
+        <div class="mini-stat"><span>Approach</span><span>Build · Test · Improve</span></div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="kicker">01 / About</div><h2>Engineering with a<br>practical mindset.</h2></div>
+          <p class="section-intro">I enjoy solving real workflow problems through clear interfaces, dependable application logic and maintainable code.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I am a final-year BSc Management Information Technology student at South Eastern University
+              of Sri Lanka, with hands-on experience developing full-stack systems. My work includes a
+              reception hall booking platform and an inventory and warehouse management application.
+              These projects have given me practical experience across requirements analysis, UI development,
+              backend APIs, relational databases, integrations, debugging and testing.
+              <br><br>
+              I value continuous learning, thoughtful problem-solving and building software that is useful
+              to the people who depend on it.
+            </p>
+          </div>
+          <div class="panel focus-list">
+            <div class="focus-item"><span class="check">✦</span><span>Translate business needs into working software features.</span></div>
+            <div class="focus-item"><span class="check">✦</span><span>Build responsive interfaces and RESTful backend services.</span></div>
+            <div class="focus-item"><span class="check">✦</span><span>Integrate payment, notification and document-generation workflows.</span></div>
+            <div class="focus-item"><span class="check">✦</span><span>Debug, validate and test applications for reliable behaviour.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="kicker">02 / Toolkit</div><h2>Technical skills.</h2></div>
+          <p class="section-intro">Technologies and tools I have used across academic and practical development projects.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card"><h3>Frontend</h3><div class="tags"><span class="tag">React.js</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Tailwind</span><span class="tag">Bootstrap</span></div></div>
+          <div class="skill-card"><h3>Backend & APIs</h3><div class="tags"><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">PHP</span><span class="tag">REST APIs</span><span class="tag">Postman</span><span class="tag">PHPMailer</span></div></div>
+          <div class="skill-card"><h3>Databases</h3><div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Neon</span><span class="tag">MySQL</span><span class="tag">SQL</span><span class="tag">PDO</span></div></div>
+          <div class="skill-card"><h3>Tools & Practices</h3><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">GitHub Actions</span><span class="tag">Jira</span><span class="tag">RBAC</span><span class="tag">Software Testing</span><span class="tag">MVC</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="kicker">03 / Selected work</div><h2>Projects that solve<br>real problems.</h2></div>
+          <p class="section-intro">A selection of systems developed to digitise workflows, organise information and support day-to-day operations.</p>
+        </div>
+        <div class="projects">
+          <article class="project-card">
+            <div class="project-top"><div class="project-icon" aria-hidden="true">▦</div><span class="project-type">Final-year project · 2026</span></div>
+            <h3>Events Management System</h3>
+            <p>A digital booking platform for Aazath Plaza Reception Hall, designed to replace manual phone reservations with a structured online workflow.</p>
+            <ul>
+              <li>Project lead for a PERN-stack platform with six user roles and ten planned features.</li>
+              <li>Role-based views, hall availability calendar, multi-step booking and dynamic pricing.</li>
+              <li>PayHere payment integration, PDF invoices and SMS/email notifications.</li>
+              <li>Management dashboard with five or more report types.</li>
+            </ul>
+            <div class="tags"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span></div>
+            <a class="project-link" href="https://github.com/THIRAYA-git/events-management-system" target="_blank" rel="noopener noreferrer">View source code ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-top"><div class="project-icon" aria-hidden="true">▤</div><span class="project-type">Full-stack project · 2025–2026</span></div>
+            <h3>InventoSmart</h3>
+            <p>An inventory and warehouse management system for SMEs, bringing purchasing, stock handling and sales invoicing into one application.</p>
+            <ul>
+              <li>Purchase orders, stock management, sales invoicing and role-based access.</li>
+              <li>Multi-warehouse stock transfers, barcode generation and PDF exports.</li>
+              <li>Invoice creation, bulk printing and email automation with PHPMailer.</li>
+              <li>Resolved bugs across 30+ files and tested CRUD operations and edge cases.</li>
+            </ul>
+            <div class="tags"><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">PDO</span><span class="tag">Bootstrap</span><span class="tag">JavaScript</span></div>
+            <a class="project-link" href="https://github.com/THIRAYA-git/traditional-inventory-ms" target="_blank" rel="noopener noreferrer">View source code ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="kicker">04 / Background</div><h2>Education & learning.</h2></div>
+          <p class="section-intro">Building a foundation in information systems, software engineering and cybersecurity.</p>
+        </div>
+        <div class="education-grid">
+          <div class="edu-card"><div class="edu-date">2023 — 2026</div><h3>BSc in Management Information Technology</h3><p>South Eastern University of Sri Lanka (SEUSL)<br>Relevant areas: Database Design, System Analysis & Design, MIS, Information System Security and Software Engineering.</p></div>
+          <div class="edu-card"><div class="edu-date">2022</div><h3>G.C.E. Advanced Level — Arts Stream</h3><p>Mahmud Ladies College, Kalmunai<br>3A passes · District Rank 28</p></div>
+        </div>
+        <div class="certs">
+          <div class="cert"><strong>Jira Learning Path</strong><small>Atlassian · 2026</small></div>
+          <div class="cert"><strong>Networking & Cyber Security with Ethical Hacking</strong><small>WinSYS Networks · Dec 2025</small></div>
+          <div class="cert"><strong>Introduction to Cybersecurity</strong><small>Cisco Networking Academy · In progress</small></div>
+        </div>
+        <div class="panel" style="margin-top:18px">
+          <strong>Languages</strong>
+          <p style="margin-top:8px">Tamil — Native &nbsp; · &nbsp; English — Professional &nbsp; · &nbsp; Sinhala — Basic</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <div class="kicker">05 / Get in touch</div>
+            <h2>Have a project or opportunity?</h2>
+            <p>I'm interested in full-stack development opportunities, collaborative projects and opportunities to keep learning. Let's connect.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:thirayafathima@gmail.com?subject=Let's%20Connect">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Fathima Thiraya R. Built with purpose.</span>
+      <div class="socials">
+        <a href="https://linkedin.com/in/fathima-thiraya" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/THIRAYA-git" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    }));
+  </script>
+</body>
+</html>
