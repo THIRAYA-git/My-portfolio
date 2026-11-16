@@ -103,6 +103,20 @@
     .footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
     .socials { display: flex; gap: 18px; }
     .socials a:hover { color: var(--accent-2); }
+
+    .contact-form-panel { margin-top: 22px; padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: rgba(17,28,46,.82); }
+    .contact-form-panel h3 { font: 600 1.25rem "Space Grotesk"; margin-bottom: 5px; }
+    .form-intro, .form-fallback { color: var(--muted); font-size: .9rem; }
+    #contactForm { display: grid; gap: 15px; margin-top: 20px; }
+    #contactForm label { display: grid; gap: 7px; color: var(--muted); font-size: .86rem; font-weight: 600; }
+    #contactForm input, #contactForm textarea { width: 100%; border: 1px solid var(--line); border-radius: 9px; padding: 12px 13px; background: #0c1627; color: var(--text); font: inherit; font-size: .92rem; outline: none; }
+    #contactForm input:focus, #contactForm textarea:focus { border-color: var(--accent); }
+    #contactForm textarea { resize: vertical; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-status { min-height: 1.4em; margin: 0; font-size: .9rem; color: var(--cyan); }
+    .form-fallback { margin: 15px 0 0; }
+    .form-fallback a { color: var(--accent-2); }
+    @media (max-width: 620px) { .form-grid { grid-template-columns: 1fr; } .contact-form-panel { padding: 21px; } }
     @media (max-width: 850px) {
       .hero { grid-template-columns: 1fr; gap: 34px; padding-top: 75px; min-height: auto; }
       .hero-card { max-width: 520px; }
@@ -137,7 +151,7 @@
       <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-        <a href="#education">Education</a><a href="#contact">Contact</a>
+        <a href="#education">Education</a><a href="#contact">Contact</a><a href="Fathima_Thiraya_Resume.pdf" download>Resume ↓</a>
       </div>
     </nav>
   </div>
@@ -153,7 +167,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
-          <a class="btn btn-secondary" href="mailto:thirayafathima@gmail.com">Contact me</a>
+          <a class="btn btn-secondary" href="Fathima_Thiraya_Resume.pdf" download>Download CV ↓</a><a class="btn btn-secondary" href="mailto:thirayafathima@gmail.com">Contact me</a>
         </div>
       </div>
       <aside class="hero-card" aria-label="Profile summary">
@@ -276,9 +290,25 @@
           <div>
             <div class="kicker">05 / Get in touch</div>
             <h2>Have a project or opportunity?</h2>
-            <p>I'm interested in full-stack development opportunities, collaborative projects and opportunities to keep learning. Let's connect.</p>
+            <p>I'm interested in full-stack development opportunities, collaborative projects and opportunities to keep learning. Send me a message or email me directly.</p>
           </div>
-          <a class="btn btn-primary" href="mailto:thirayafathima@gmail.com?subject=Let's%20Connect">Email me ↗</a>
+          <a class="btn btn-primary" href="mailto:thirayafathima@gmail.com?subject=Portfolio%20Enquiry">Email me ↗</a>
+        </div>
+        <div class="contact-form-panel">
+          <h3>Send a message</h3>
+          <p class="form-intro">Complete the form below. Your message will be sent to my email address.</p>
+          <form id="contactForm" action="https://formspree.io/f/mreoaapq" method="POST">
+            <input type="hidden" name="_subject" value="New message from your portfolio website">
+            <div class="form-grid">
+              <label>Your name<input type="text" name="name" placeholder="Your name" required></label>
+              <label>Your email<input type="email" name="email" placeholder="name@example.com" required></label>
+            </div>
+            <label>Subject<input type="text" name="subject" placeholder="What would you like to discuss?" required></label>
+            <label>Message<textarea name="message" rows="5" placeholder="Write your message..." required></textarea></label>
+            <button class="btn btn-primary" type="submit" id="sendMessageBtn">Send message ↗</button>
+            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+          </form>
+          <p class="form-fallback">Prefer email? <a href="mailto:thirayafathima@gmail.com">thirayafathima@gmail.com</a></p>
         </div>
       </div>
     </section>
@@ -289,7 +319,7 @@
       <span>© <span id="year"></span> Fathima Thiraya R. Built with purpose.</span>
       <div class="socials">
         <a href="https://linkedin.com/in/fathima-thiraya" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a href="https://github.com/THIRAYA-git" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://github.com/THIRAYA-git" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://thiraya-git.github.io/My-portfolio/" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
       </div>
     </div>
   </footer>
@@ -301,6 +331,36 @@
       const isOpen = navLinks.classList.toggle("open");
       menuBtn.setAttribute("aria-expanded", String(isOpen));
     });
+
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+      contactForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const button = document.getElementById("sendMessageBtn");
+        const status = document.getElementById("formStatus");
+        button.disabled = true;
+        button.textContent = "Sending...";
+        status.textContent = "";
+        try {
+          const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: new FormData(contactForm),
+            headers: { "Accept": "application/json" }
+          });
+          if (response.ok) {
+            status.textContent = "Thank you! Your message has been sent.";
+            contactForm.reset();
+          } else {
+            status.textContent = "Unable to send right now. Please email me directly.";
+          }
+        } catch (error) {
+          status.textContent = "Connection issue. Please email me directly.";
+        } finally {
+          button.disabled = false;
+          button.textContent = "Send message ↗";
+        }
+      });
+    }
     navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
       navLinks.classList.remove("open");
       menuBtn.setAttribute("aria-expanded", "false");
